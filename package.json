@@ -1,0 +1,40 @@
+{
+  "name": "ticketwin",
+  "version": "0.0.0",
+  "description": "Test API for TicketWin",
+  "main": "server.js",
+  "repository": "https://github.com/wgimson/TicketWin",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp serve-dev"
+  },
+  "author": "William Gimson, Thomas Weld",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.8"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.2",
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-mocha": "^3.0.1",
+    "gulp-node-inspector": "^0.1.0",
+    "gulp-nodemon": "^2.2.1",
+    "gulp-print": "^2.0.1",
+    "gulp-util": "^3.0.8",
+    "jscs": "^3.0.7",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "mocha": "^3.2.0",
+    "mocha-clean": "^1.0.0",
+    "yargs": "^6.6.0"
+  }
+}
