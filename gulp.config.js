@@ -25,7 +25,7 @@ module.exports = function() {
         /**
          * NODE SETTINGS
          */
-         defaultPort: 1337,
+         defaultPort: 80,
          nodeServer: './server.js'
     };
 

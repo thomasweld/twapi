@@ -13,7 +13,7 @@ dbUtil.dbConnect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = 1337,//process.env.PORT,
+var port = process.env.PORT,
     env  = process.env.NODE_ENV;
 // REGISTER OUR ROUTES -------------------------------
 // ===================================================
