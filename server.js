@@ -1,6 +1,7 @@
 var express    = require('express'),   
     mongoose   = require('mongoose'),
     eventRouter = require('./app/routes/event-Router'),  
+    couponRouter = require('./app/routes/coupon-Router'),
     dbUtil      = require('./app/data/db.js'),
     bodyParser = require('body-parser');
 
@@ -13,11 +14,12 @@ dbUtil.dbConnect();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT,
-    env  = process.env.NODE_ENV;
+var port = process.env.PORT;
+var env  = process.env.NODE_ENV;
 // REGISTER OUR ROUTES -------------------------------
 // ===================================================
 app.use('/api/events', eventRouter);
+app.use('/api/coupons', couponRouter);
 
 // START THE SERVER
 // ===================================================
