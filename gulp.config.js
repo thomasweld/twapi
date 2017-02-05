@@ -1,5 +1,5 @@
 module.exports = function() {
-    var server = './**/*',
+    var server = '/**/*.js',
         report = './report/';
 
     var config = {
