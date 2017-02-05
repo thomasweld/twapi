@@ -35,7 +35,6 @@ gulp.task('serve-dev', function() {
         },
         watch: [config.server]
     };
-    log(config.server);
     return $.nodemon(nodeOptions)
             .on('restart', ['vet'], function(ev) {
                 log('*** node server restarted');
