@@ -2,10 +2,6 @@ var mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
 var EventSchema   = new Schema({
-    eventId: {
-        type:     Schema.ObjectId,
-        required: [true, 'A title is required'] 
-    }, 
     title: {
         type:     String,
         required: [true, 'A title is required'] 

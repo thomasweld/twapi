@@ -6,14 +6,15 @@ var express       = require('express'),
 var router = express.Router();
 
 router.use(function(req, res, next) {
-    console.log('---An Event route is being called---');
+    console.log('A route is being called');
     next();
 });
- 
+
 router.route('/')
     .post(function(req, res) {
-         console.log('POST Event');
+         console.log('A POST route is being called');
         var event = new Event();
+
         event.title            = req.body.title;
         event.description      = req.body.description;
         event.startDate        = req.body.startDate;
@@ -38,7 +39,7 @@ router.route('/')
         });
     })
     .get(function(req, res) {
-         console.log('GET Events');
+         console.log('A GET route is being called');
         Event.find(function(err, events) {
             if (err) {
                 res.send(err);
@@ -49,7 +50,7 @@ router.route('/')
 
 router.route('/featured')
     .get(function(req, res) {
-        console.log('GET Featured Events');
+        console.log('A GET route is being called');
         Event.find({ 'isFeatured': 'true'}, function(err, events) {
             if (err) {
                 res.send(err);
@@ -60,7 +61,7 @@ router.route('/featured')
     
 router.route('/:eventId')
     .get(function(req, res) {
-        console.log('GET Event by ID');
+         console.log('A GET route is being called');
         Event.findById(req.params.eventId, function(err, event) {
             if (err) {
                 res.send(err);
@@ -69,7 +70,7 @@ router.route('/:eventId')
         });
     })
     .put(function(req, res) {
-         console.log('PUT Event by ID');
+         console.log('A PUT route is being called');
         Event.findById(req.params.eventId, function(err, updatedEvent) {
             if (err) {
                 res.send(err);
@@ -89,7 +90,7 @@ router.route('/:eventId')
         });
     })
     .delete(function(req, res) {
-         console.log('DELETE Event by ID');
+         console.log('A DELETE route is being called');
         Event.remove({ _id: req.params.eventId }, function(err, event) {
             if (err) {
                 res.send(err);
@@ -97,5 +98,7 @@ router.route('/:eventId')
             res.json(event);
         });
     });
+
+
 
 module.exports = router;
