@@ -63,10 +63,9 @@ router.route('/:couponId')
             updatedCoupon.amount     = req.body.amount;
             updatedCoupon.syncedAt   = req.body.syncedAt;
             updatedCoupon.redeemedAt = req.body.redeemedAt;
-            updatedCoupon.updatedAt  = req.body.updatedAt;
-            updatedCoupon.orderId    = req.body.orderId;
+            updatedCoupon.updatedAt  = dateFunctions.getDate();
 
-            updatedCoupon.save(function(err) {
+            updatedCoupon.save(function(err, updateCoupon) {
                 if (err) { 
                     res.send(err);
                 }

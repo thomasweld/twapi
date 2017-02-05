@@ -75,12 +75,16 @@ router.route('/:eventId')
                 res.send(err);
             }
 
-            updatedEvent.name = req.body.name;
-            updatedEvent.owner = req.body.owner;
+            updatedEvent.title = req.body.title;
+            updatedEvent.description = req.body.description;
             updatedEvent.startDate = req.body.startDate;
             updatedEvent.endDate = req.body.endDate;
+            updatedEvent.createdAt = dateFunctions.getDate();
+            updatedEvent.status = req.body.status;
+            updatedEvent.imageFileName = req.body.imageFileName;
+            updatedEvent.location = req.body.location;
 
-            updatedEvent.save(function(err) {
+            updatedEvent.save(function(err, updatedEvent) {
                 if (err) { 
                     res.send(err);
                 }
