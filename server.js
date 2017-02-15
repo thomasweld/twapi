@@ -1,9 +1,11 @@
 var express    = require('express'),   
     mongoose   = require('mongoose'),
-    eventRouter = require('./app/routes/event-Router'),  
+    bodyParser = require('body-parser'),
+    
+    eventRouter  = require('./app/routes/event-Router'),  
     couponRouter = require('./app/routes/coupon-Router'),
-    dbUtil      = require('./app/data/db.js'),
-    bodyParser = require('body-parser');
+    dbUtil       = require('./app/data/db.js'),
+    winston      = require('./winston.config');
 
 var app = express();  
 
@@ -24,6 +26,6 @@ app.use('/api/coupons', couponRouter);
 // START THE SERVER
 // ===================================================
 app.listen(port);
-console.log('About to crank up Node Server on port: ' + port + ' in environment: ' + env);
+winston.log('info', 'About to crank up Node Server on port: ' + port + ' in environment: ' + env);
 
 module.exports = app;

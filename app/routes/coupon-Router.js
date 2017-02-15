@@ -2,7 +2,8 @@ var express       = require('express'),
     dateFunctions = require('../utils/date_functions.js'),
     mongoose      = require('mongoose'),
     idObj         = require('../utils/idGen'),
-    Coupon        = require('../../app/models/coupon'); 
+    Coupon        = require('../../app/models/coupon'),
+    winston       = require('../../winston.config');
 
 var router = express.Router();
 
@@ -10,13 +11,13 @@ var router = express.Router();
 var ids = idObj;
 
 router.use(function(req, res, next) {
-    console.log('---A Coupon route is being called---');
+    winston.log('info', '---A Coupon route is being called---');
     next();
 });
 
 router.route('/')
     .post(function(req, res) {
-        console.log('POST Coupon');
+        winston.log('info', '---POST Coupon---');
         var coupon = new Coupon();
         coupon.orderId    = idObj.orderId;
         coupon.eventId    = idObj.eventId;
@@ -28,15 +29,17 @@ router.route('/')
 
         coupon.save(function(err) {
             if (err) {
+                winston.log('error', '---POST COUPON ERROR', { error: err });
                 res.send(err);
             }
             res.json(Coupon);
         });
     })
     .get(function(req, res) {
-        console.log('GET All Coupons');
+        winston.log('info', '--GET All Coupons--');
         Coupon.find(function(err, coupons) {
             if (err) {
+                winston.log('error', '---GET ALL COUPONS ERROR', { error: err });
                 res.send(err);
             }
             res.json(coupons);
@@ -45,16 +48,17 @@ router.route('/')
     
 router.route('/:couponId')
     .get(function(req, res) {
-        console.log('GET Coupon by ID');
+        winston.log('info', '---GET Coupon by ID---');
         Coupon.findById(req.params.couponId, function(err, coupon) {
             if (err) {
+                winston.log('error', '---GET COUPON ERROR', { error: err });
                 res.send(err);
             }
             res.json(coupon);
         });
     })
     .put(function(req, res) {
-        console.log('PUT Coupon by ID');
+        winston.log('info', '---PUT Coupon by ID---');
         Coupon.findById(req.params.couponId, function(err, updatedCoupon) {
             if (err) {
                 res.send(err);
@@ -67,6 +71,7 @@ router.route('/:couponId')
 
             updatedCoupon.save(function(err, updateCoupon) {
                 if (err) { 
+                    winston.log('error', '---UPDATE COUPON ERROR', { error: err });
                     res.send(err);
                 }
                 res.json(updatedCoupon);
@@ -74,9 +79,10 @@ router.route('/:couponId')
         });
     })
     .delete(function(req, res) {
-        console.log('DELETE Coupon by ID');
+        winston.log('info', '---DELETE Coupon by ID---');
         Coupon.remove({ _id: req.params.couponId }, function(err, coupon) {
             if (err) {
+                winston.log('error', '---DELETE COUPON ERROR', { error: err });
                 res.send(err);
             }
             res.json(coupon);

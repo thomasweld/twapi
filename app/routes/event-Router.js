@@ -1,12 +1,13 @@
 var express       = require('express'),
     dateFunctions = require('../utils/date_functions.js'),
     mongoose      = require('mongoose'),
-    Event         = require('../../app/models/event'); 
+    Event         = require('../../app/models/event'),
+    winston       = require('../../winston.config'); 
 
 var router = express.Router();
 
 router.use(function(req, res, next) {
-    console.log('---An Event route is being called---');
+    winston.log('info', '---An Event route is being called---');
     next();
 });
  
@@ -38,9 +39,10 @@ router.route('/')
         });
     })
     .get(function(req, res) {
-         console.log('GET Events');
+         winston.log('info', '---GET Events---');
         Event.find(function(err, events) {
             if (err) {
+                winston.log('error', '---GET EVENTS ERROR---', { error: err });
                 res.send(err);
             }
             res.json(events);
@@ -49,9 +51,10 @@ router.route('/')
 
 router.route('/featured')
     .get(function(req, res) {
-        console.log('GET Featured Events');
+        winston.log('info', '---GET Featured Events---');
         Event.find({ 'isFeatured': 'true'}, function(err, events) {
             if (err) {
+                winston.log('error', '---GET FEATURED EVENTS ERROR---', { error: err });
                 res.send(err);
             }
             res.json(events);
@@ -60,18 +63,20 @@ router.route('/featured')
     
 router.route('/:eventId')
     .get(function(req, res) {
-        console.log('GET Event by ID');
+        winston.log('info', '---GET Event by ID---');
         Event.findById(req.params.eventId, function(err, event) {
             if (err) {
+                winston.log('error', '---GET EVENT BY ID ERROR---', { error: err });
                 res.send(err);
             }
             res.json(event);
         });
     })
     .put(function(req, res) {
-         console.log('PUT Event by ID');
+         winston.log('info', '---PUT Event by ID---');
         Event.findById(req.params.eventId, function(err, updatedEvent) {
             if (err) {
+                winston.log('error', '---GET EVENT BY ID ERROR---', { error: err });
                 res.send(err);
             }
 
@@ -86,6 +91,7 @@ router.route('/:eventId')
 
             updatedEvent.save(function(err, updatedEvent) {
                 if (err) { 
+                    winston.log('error', '---UPDATE EVENT ERROR---', { error: err });
                     res.send(err);
                 }
                 res.json(updatedEvent);
@@ -93,9 +99,10 @@ router.route('/:eventId')
         });
     })
     .delete(function(req, res) {
-         console.log('DELETE Event by ID');
+         winston.log('info', '---DELETE Event by ID---');
         Event.remove({ _id: req.params.eventId }, function(err, event) {
             if (err) {
+                winston.log('error', '---DELETE EVENT ERROR---', { error: err });
                 res.send(err);
             }
             res.json(event);

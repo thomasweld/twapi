@@ -4,7 +4,10 @@ var mongoose = require('mongoose'),
 var CouponSchema   = new Schema({
     orderId: Schema.ObjectId,
     eventId: Schema.ObjectId,
-    amount: Number,
+    amount: {
+        type: Number,
+        required: [true, 'A Coupon Amount is Required']
+    },
     syncedAt: Date,
     redeemedAt: Date,
     createdAt: {
