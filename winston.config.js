@@ -5,12 +5,12 @@ winston.configure({
         new (winston.transports.Console)(),
         new (winston.transports.File)({ 
             name: 'info-log',
-            filename: 'info.log',
+            filename: 'logs/info.log',
             level: 'info'
         }),
         new (winston.transports.File)({ 
             name: 'error-log',
-            filename: 'error.log',
+            filename: 'logs/error.log',
             level: 'error' 
         })
     ]
