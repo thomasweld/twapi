@@ -4,21 +4,21 @@ var mongoose = require('mongoose'),
 var CouponSchema   = new Schema({
     orderId: Schema.ObjectId,
     eventId: Schema.ObjectId,
+    code: {
+        type: String,
+        required: [true, 'A coupon code is required']
+    },
     amount: {
         type: Number,
-        required: [true, 'A Coupon Amount is Required']
+        required: [true, 'A coupon amount is required']
     },
     syncedAt: Date,
     redeemedAt: Date,
     createdAt: {
         type: Date,
-        required: [true, 'a create date is required']
+        required: [true, 'A create date is required']
     },
-    // don't understand why update date would be required
-    updatedAt: {
-        type: Date,
-        //required: [true, 'an updated date is rquired']
-    }
+    updatedAt: type: Date
 }, { collection: 'Coupons' });
 
 module.exports = mongoose.model('Coupon', CouponSchema);
