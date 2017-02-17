@@ -18,7 +18,7 @@ var CouponSchema   = new Schema({
         type: Date,
         required: [true, 'A create date is required']
     },
-    updatedAt: type: Date
+    updatedAt: Date
 }, { collection: 'Coupons' });
 
 module.exports = mongoose.model('Coupon', CouponSchema);
