@@ -1,21 +1,21 @@
-var mongoose = require('mongoose'),
+// var mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
 var EventSchema   = new Schema({
     title: {
         type:     String,
-        required: [true, 'A title is required'] 
+        required: [true, 'A title is required']
     },
     description:        String,
     startDate:         Date,
     endDate:           Date,
     userId:            Schema.ObjectId,
-    createdAt: {        
+    createdAt: {
         type:     Date,
         required: [true, 'Create Date cannot be Null']
     },
     updatedAt:         Date,
-    status: {            
+    status: {
         type: String,
         enum: ['pending', 'confirmed', 'in progress', 'over']
     },
