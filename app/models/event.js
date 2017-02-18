@@ -1,4 +1,4 @@
-// var mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     Schema   = mongoose.Schema;
 
 var EventSchema   = new Schema({
@@ -12,7 +12,7 @@ var EventSchema   = new Schema({
     userId:            Schema.ObjectId,
     createdAt: {
         type:     Date,
-        required: [true, 'Create Date cannot be Null']
+        required: [true, 'Create date cannot be null']
     },
     updatedAt:         Date,
     status: {
