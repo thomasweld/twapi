@@ -101,6 +101,11 @@ gulp.task('test', ['vet'], ()=> {
         //startTests(true, done);
 });
 
+gulp.task('build', function() {
+    gulp.src(['./package.json', './bower.json',])
+        .pipe($.install());
+});
+
 // UTILITY FUNCTIONS -------------------------------------------------
 //====================================================================
 function log(msg) {

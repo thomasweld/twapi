@@ -10,15 +10,15 @@ var TicketSchema   = new Schema({
         type:     String,
         required: [true, 'A status is required']
     },
-    userId: Number,
-    tierId: Number,
-    orderId: Number,
+    userId: Schema.ObjectId,
+    tierId: Schema.ObjectId,
+    orderId: Schema.ObjectId,
     // eventId: Number, // >> DO WE NEED THIS ?
     createdAt: {
         type: Date,
         required: [true, 'A create date is required']
     },
-    updatedAt: type: Date
+    updatedAt: Date
 
 }, { collection: 'Tickets' });
 

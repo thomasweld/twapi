@@ -21,6 +21,7 @@
     "chai-http": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-if": "^2.0.2",
+    "gulp-install": "^0.6.0",
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.4",
     "gulp-load-plugins": "^1.4.0",

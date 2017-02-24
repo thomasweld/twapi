@@ -103,5 +103,47 @@
             "orderId": "5896c9753485a53384aa5ad0",
             "__v": 0
         }
+    ],
+    "tickets": [
+        {
+            "_id": "58afb5afbec49713a4e12271",
+            "createdAt": "2017-02-23T05:00:00.000Z",
+            "orderId": "58afb5a9bec49713a4e12270",
+            "tierId": "58afb5a9bec49713a4e1226f",
+            "userId": "58afb5a9bec49713a4e1226e",
+            "status": "pending",
+            "sku": "3049t8hoiduf9834hq3f",
+            "__v": 0
+        },
+        {
+            "_id": "58afb5c2bec49713a4e12272",
+            "createdAt": "2017-02-23T05:00:00.000Z",
+            "orderId": "58afb5a9bec49713a4e12270",
+            "tierId": "58afb5a9bec49713a4e1226f",
+            "userId": "58afb5a9bec49713a4e1226e",
+            "status": "not created",
+            "sku": "rg98hfunsdkvh9q8rhg13ng",
+            "__v": 0
+        },
+        {
+            "_id": "58afb5cabec49713a4e12273",
+            "createdAt": "2017-02-23T05:00:00.000Z",
+            "orderId": "58afb5a9bec49713a4e12270",
+            "tierId": "58afb5a9bec49713a4e1226f",
+            "userId": "58afb5a9bec49713a4e1226e",
+            "status": "delayed",
+            "sku": "320498hwifuvnw8hf-439f",
+            "__v": 0
+        },
+        {
+            "_id": "58afb5d3bec49713a4e12274",
+            "createdAt": "2017-02-23T05:00:00.000Z",
+            "orderId": "58afb5a9bec49713a4e12270",
+            "tierId": "58afb5a9bec49713a4e1226f",
+            "userId": "58afb5a9bec49713a4e1226e",
+            "status": "completed",
+            "sku": "ao8e7hvruerbq87hf4bqer",
+            "__v": 0
+        }
     ]
 }

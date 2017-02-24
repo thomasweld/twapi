@@ -27,7 +27,7 @@ var TierSchema   = new Schema({
         type: Date,
         required: [true, 'A create date is required']
     },
-    updatedAt: type: Date
+    updatedAt: Date
 }, { collection: 'Tiers' });
 
 module.exports = mongoose.model('Tier', TierSchema);

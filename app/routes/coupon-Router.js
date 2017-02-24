@@ -17,22 +17,23 @@ router.use(function(req, res, next) {
 
 router.route('/')
     .post(function(req, res) {
-        winston.log('info', '---POST Coupon---');
         var coupon = new Coupon();
         coupon.orderId    = idObj.orderId;
         coupon.eventId    = idObj.eventId;
         coupon.amount     = req.body.amount;
+        winston.log('info', coupon.amount);
         coupon.syncedAt   = req.body.syncedAt;
         coupon.redeemedAt = req.body.redeemedAt;
         coupon.createdAt  = dateFunctions.getDate();
         coupon.updatedAt  = req.body.updatedAt;
+        coupon.code = req.body.code;
 
         coupon.save(function(err) {
             if (err) {
                 winston.log('error', '---POST COUPON ERROR', { error: err });
                 res.send(err);
             }
-            res.json(Coupon);
+            res.json(coupon);
         });
     })
     .get(function(req, res) {
