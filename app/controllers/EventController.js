@@ -1,6 +1,4 @@
-var mongoose      = require('mongoose'),
-
-    Event        = require('../../app/models/event'),
+var Event         = require('../../app/models/event'),
     winston       = require('../../winston.config'),
     idObj         = require('../utils/idGen'),
     dateFunctions = require('../utils/date_functions.js');
@@ -14,7 +12,7 @@ exports.createEvent = function(req, res) {
     event.description      = req.body.description;
     event.startDate        = req.body.startDate;
     event.endDate          = req.body.endDate;
-    event.userId           = mongoose.Types.ObjectId();
+    event.userId           = idObj.userId;
     event.createdAt        = dateFunctions.getDate();
     event.updatedAt        = null;
     event.status           = req.body.status;

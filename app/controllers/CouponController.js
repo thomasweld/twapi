@@ -1,6 +1,4 @@
-var mongoose      = require('mongoose'),
-
-    Coupon        = require('../../app/models/coupon'),
+var Coupon        = require('../../app/models/coupon'),
     winston       = require('../../winston.config'),
     idObj         = require('../utils/idGen'),
     dateFunctions = require('../utils/date_functions.js');
@@ -12,7 +10,6 @@ exports.createCoupon = function(req, res) {
     coupon.orderId    = idObj.orderId;
     coupon.eventId    = idObj.eventId;
     coupon.amount     = req.body.amount;
-    winston.log('info', coupon.amount);
     coupon.syncedAt   = req.body.syncedAt;
     coupon.redeemedAt = req.body.redeemedAt;
     coupon.createdAt  = dateFunctions.getDate();
@@ -54,21 +51,21 @@ exports.getCouponById = function(req, res) {
 exports.updateCoupon = function(req, res) {
     winston.log('info', '---PUT Coupon by ID---');
     Coupon.findById(req.params.couponId, function(err, updatedCoupon) {
-    if (err) {
-        res.send(err);
-    }
-
-    updatedCoupon.amount     = req.body.amount;
-    updatedCoupon.syncedAt   = req.body.syncedAt;
-    updatedCoupon.redeemedAt = req.body.redeemedAt;
-    updatedCoupon.updatedAt  = dateFunctions.getDate();
-
-    updatedCoupon.save(function(err, updateCoupon) {
-        if (err) { 
-            winston.log('error', '---UPDATE COUPON ERROR---', { error: err });
+        if (err) {
             res.send(err);
         }
-        res.json(updatedCoupon);
+
+        updatedCoupon.amount     = req.body.amount;
+        updatedCoupon.syncedAt   = req.body.syncedAt;
+        updatedCoupon.redeemedAt = req.body.redeemedAt;
+        updatedCoupon.updatedAt  = dateFunctions.getDate();
+
+        updatedCoupon.save(function(err, updateCoupon) {
+            if (err) { 
+                winston.log('error', '---UPDATE COUPON ERROR---', { error: err });
+                res.send(err);
+            }
+            res.json(updatedCoupon);
         });
     });
 };
