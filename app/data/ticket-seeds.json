@@ -1,0 +1,15 @@
+[
+        {
+            "location" : "Michigan",
+            "updatedAt" : null,
+            "description" : "testing new Events controller",
+            "title" : "controller test 2"
+        },
+        {
+            "location" : "Omaha",
+            "imageContentType" : "png",
+            "updatedAt" : null,
+            "description" : "testing new Events controller",
+            "title" : "controller test"
+        }
+]
