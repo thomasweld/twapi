@@ -6,7 +6,7 @@
   "repository": "https://github.com/wgimson/TicketWin",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "gulp serve-dev"
+    "start": "node server.js"
   },
   "author": "William Gimson, Thomas Weld",
   "license": "ISC",
