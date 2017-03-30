@@ -6,7 +6,8 @@
   "repository": "https://github.com/wgimson/TicketWin",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy-start": "sudo forever start server.js"
   },
   "author": "William Gimson, Thomas Weld",
   "license": "ISC",
