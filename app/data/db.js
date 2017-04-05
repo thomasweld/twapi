@@ -1,9 +1,11 @@
 var mongoose = require('mongoose'),
-    exports = module.exports = {};
+    db = require('./configuration/database.js');
+    
+var exports  = module.exports = {};
 
 exports.dbConnect = function() {
     // Build the connection string 
-    var dbURI = 'mongodb://localhost:27017/ticketWin_DB'; 
+    var dbURI = db.url; //'mongodb://localhost:27017/ticketWin_DB'; 
 
     // Create the database connection 
     mongoose.connect(dbURI); 

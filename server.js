@@ -6,6 +6,7 @@ var express    = require('express'),
     eventRouter  = require('./app/routes/event-Router'),  
     couponRouter = require('./app/routes/coupon-Router'),
     ticketRouter = require('./app/routes/ticket-router'),
+    orderRouter  = require('./app/routes/order-Router'),
     dbUtil       = require('./app/data/db.js'),
     winston      = require('./winston.config');
 
@@ -26,6 +27,7 @@ app.use('/api/events', eventRouter);
 app.use('/api/coupons', couponRouter);
 //app.use('/api/tiers', tierRouter);
 app.use('/api/tickets', ticketRouter);
+app.use('/api/orders', orderRouter);
 
 // START THE SERVER
 // ===================================================
