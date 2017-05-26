@@ -13,6 +13,20 @@ var express    = require('express'),
 
 var app = express();  
 
+// CONNECT TO DB AND REGISTER DATA EVENT -------------
+// ===================================================
+dbUtil.dbConnect();             
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(express.static('./app/public'));
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Header', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+}); 
+
 // swagger definition
 var swaggerDefinition = {
   info: {
@@ -40,20 +54,6 @@ app.get('/swagger.json', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 });
-
-// CONNECT TO DB AND REGISTER DATA EVENT -------------
-// ===================================================
-dbUtil.dbConnect();             
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(express.static('./app/public'));
-
-app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Header', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-}); 
 
 var port = 80;//process.env.PORT;
 var env  = process.env.NODE_ENV;
