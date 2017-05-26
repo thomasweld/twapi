@@ -2,6 +2,7 @@
 var express    = require('express'),   
     mongoose   = require('mongoose'),
     bodyParser = require('body-parser'),
+    swaggerJSDoc = require('swagger-jsdoc'),
 // OUR MODULES
     eventRouter  = require('./app/routes/event-Router'),  
     couponRouter = require('./app/routes/coupon-Router'),
@@ -12,12 +13,41 @@ var express    = require('express'),
 
 var app = express();  
 
+// swagger definition
+var swaggerDefinition = {
+  info: {
+    title: 'Node Swagger API',
+    version: '1.0.0',
+    description: 'Swagger documentation for TicketWin API',
+  },
+  host: 'localhost:80',
+  basePath: '/',
+};
+
+// options for the swagger docs
+var options = {
+  // import swaggerDefinitions
+  swaggerDefinition: swaggerDefinition,
+  // path to the API docs
+  apis: ['./app/routes/*.js'],
+};
+
+// initialize swagger-jsdoc
+var swaggerSpec = swaggerJSDoc(options);
+
+// serve swagger
+app.get('/swagger.json', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
+
 // CONNECT TO DB AND REGISTER DATA EVENT -------------
 // ===================================================
 dbUtil.dbConnect();             
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('./app/public'));
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');

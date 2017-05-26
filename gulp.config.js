@@ -7,6 +7,8 @@ module.exports = function() {
         allJs: [
             './app/**/*.js',
             './*.js',
+            // Exclude Swagger Files they're all jacked up
+            '!./app/public/**/*.js'
             
          ],
          server: server,
